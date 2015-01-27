@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html data-ng-app="alkiraApp">
+<head>
+<meta charset="UTF-8">
+
+<!-- JQuery Tools -->
+<script src="res/jquery/jquery.js"></script>
+
+<!-- Bootstrap Tools  -->
+<link href="res/bootstrap-3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="res/bootstrap-3.2.0/js/bootstrap.js"></script>
+
+<!-- Angular Js Tools -->
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+
+<!-- Material Bootstrap Tools -->
+<link href="dist/css/ripples.min.css" rel="stylesheet">
+<link href="dist/css/material-wfont.min.css" rel="stylesheet">
+
+<!-- Overriding colour scheme -->
+<link href="res/css/palette.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Starting out</title>
+</head>
+<body>
+
+	<div class="navbar-wrapper">
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="jumbotron">
+					<h1>Alkira Co.</h1>
+					<p>We aim to make the best products that suite your needs.</p>
+					<div class="row" >
+						<div class="col-md-4">
+							<img class="img-circle img-responsive shadow-z-2 float-img"
+								src="res/img/icon1.jpg" />
+						</div>
+						<div class="col-md-4">
+							<img class="img-circle img-responsive shadow-z-2 float-img"
+								src="res/img/icon2.jpg" "/>
+						</div>
+						<div class="col-md-4">
+							<img class="img-circle img-responsive shadow-z-2 float-img"
+								src="res/img/icon3.jpg"/>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</nav>
+	</div>
+	<div class="row" style="height: 100px;"></div>
+	<div class="container">
+		<div class="row featurette">
+			<div class="col-md-5">
+				<h2 class="featurette-heading">Angular JS Image Gallery Sample</h2>
+				<p class="lead">
+					<element> This applet shows the compatibility of Angular
+					js on a material design bootstrap framework. </element>
+				</p>
+			</div>
+			<div class="col-md-7" data-ng-controller="imageGallery">
+				<div class='gallery' ng-show="product.images.length">
+					<img ng-src="{{product.images[0]}}" />
+					<ul class="list-inline thumbs">
+						<li class="thumbnail" ng-repeat="image in product.images"><img
+							ng-src="{{image}}" /></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr class="featurette-divider">
+	<div class="container">
+		<div class="row featurette">
+			<div class="col-md-7" data-ng-controller="Buttons"></div>
+			<div class="col-md-5">
+				<h2 class="featurette-heading">Angular JS Action Buttons</h2>
+				<p class="lead">
+					<element> This applet shows some bootstrap buttons
+					running angular js scripts and actions. </element>
+				</p>
+			</div>
+		</div>
+	</div>
+	<hr class="featurette-divider">
+	<div class="container">
+		<div class="row featurette">
+			<div class="col-md-5">
+				<h2 class="featurette-heading">DOM Interactor</h2>
+				<p class="lead">
+					<element> This applet shows how angular js can easily
+					interact with the bootstrap styled DOM. </element>
+				</p>
+			</div>
+			<div class="col-md-7" data-ng-controller="DOMControl"></div>
+		</div>
+
+	</div>
+	<hr class="featurette-divider">
+	<div class="container">
+		<div data-ng-controller="AlertDemoCtrl">
+			<p>
+				<alert ng-repeat="alert in alerts" type="{{alert.type}}"
+					close="closeAlert($index)">{{alert.msg}}</alert>
+			</p>
+			<p>
+				<button class='btn btn-default' ng-click="addAlert()">Add
+					Alert</button>
+			</p>
+		</div>
+		<script>
+		var app = angular.module("alkiraApp",[]);
+app.controller("AlertDemoCtrl",function  ($scope) {
+	  $scope.alerts = [
+	    { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
+	    { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
+	  ];
+
+	  $scope.addAlert = function() {
+	    $scope.alerts.push({msg: 'Another alert!'});
+	  };
+
+	  $scope.closeAlert = function(index) {
+	    $scope.alerts.splice(index, 1);
+	  };
+});
+app.controller("interactiveLogos",function($scope){
+	$scope.shadows = {"img-circle img-responsive shadow-z-2 float-img",
+			"img-circle img-responsive shadow-z-3 float-img",
+			"img-circle img-responsive shadow-z-4 float-img",
+			"img-circle img-responsive shadow-z-5 float-img"};
+	$scope.startPos = 0;
+	$scope.hoverIn = function(){
+			somethingsomthing.class =  $scope.shadows[$startPos];
+		};
+	$scope.hoverOut = function(){};
+});
+app.controller("Buttons",function($scope){
+	$scope.test = {};
+});
+app.controller("imageGallery",function($scope){
+	$scope.test = {};
+});
+app.controller("DOMControl",function($scope){
+	$scope.test = {};
+});
+</script>
+	</div>
+
+
+
+	<hr class="featurette-divider">
+	<footer>
+		<div class="container-fluid">
+			<p class="pull-right">
+				<a href="#">Back to top</a>
+			</p>
+			<p>
+				© 2014 Alkira International, Inc. · <a href="#">Privacy</a> · <a
+					href="#">Terms</a>
+			</p>
+		</div>
+	</footer>
+</body>
+</html>
