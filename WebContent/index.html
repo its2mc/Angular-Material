@@ -13,6 +13,8 @@
 <!-- Angular Js Tools -->
 <script
 	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<!--  <script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-animate.js"></script>-->
 
 <!-- Material Bootstrap Tools -->
 <link href="dist/css/ripples.min.css" rel="stylesheet">
@@ -21,7 +23,16 @@
 <!-- Overriding colour scheme -->
 <link href="res/css/palette.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<script>
+function sleep(milliseconds){
+	var start = new Date().getTime();
+	for (var i = 0; i < 1e7; i++) {
+		if ((new Date().getTime() - start) > milliseconds){
+			break;
+		}
+	}
+}
+</script>
 <title>Starting out</title>
 </head>
 <body>
@@ -32,7 +43,7 @@
 				<div class="jumbotron">
 					<h1>Alkira Co.</h1>
 					<p>We aim to make the best products that suite your needs.</p>
-					<div class="row" >
+					<div class="row">
 						<div class="col-md-4">
 							<img class="img-circle img-responsive shadow-z-2 float-img"
 								src="res/img/icon1.jpg" />
@@ -43,7 +54,7 @@
 						</div>
 						<div class="col-md-4">
 							<img class="img-circle img-responsive shadow-z-2 float-img"
-								src="res/img/icon3.jpg"/>
+								src="res/img/icon3.jpg" />
 						</div>
 					</div>
 				</div>
@@ -64,10 +75,10 @@
 			</div>
 			<div class="col-md-7" data-ng-controller="imageGallery">
 				<div class='gallery' data-ng-show="images.length">
-	<!--  				<img ng-src="{{images[0]}}" /> -->
 					<ul class="list-inline ">
 						<li data-ng-repeat="image in images"><img
-							data-ng-src="{{image}}" /></li>
+							data-ng-src="{{image}}" class="btn btn-default"
+							ng-click="hoverIn()" /></li>
 					</ul>
 				</div>
 			</div>
@@ -76,7 +87,24 @@
 	<hr class="featurette-divider">
 	<div class="container">
 		<div class="row featurette">
-			<div class="col-md-7" data-ng-controller="Buttons"></div>
+			<div class="col-md-7" data-ng-controller="Buttons">
+				<button class="btn btn-material-blue-light-blue-700">
+					500
+					<div class="ripple-wrapper"></div>
+				</button>
+				<button class="btn btn-material-blue-light-cyan-700">
+					500
+					<div class="ripple-wrapper"></div>
+				</button>
+				<button class="btn btn-material-blue-blue-700">
+					500
+					<div class="ripple-wrapper"></div>
+				</button>
+				<button class="btn btn-material-blue-indigo-700">
+					500
+					<div class="ripple-wrapper"></div>
+				</button>
+			</div>
 			<div class="col-md-5">
 				<h2 class="featurette-heading">Angular JS Action Buttons</h2>
 				<p class="lead">
@@ -121,7 +149,7 @@ app.controller("AlertDemoCtrl",function  ($scope) {
 	  ];
 
 	  $scope.addAlert = function() {
-	    $scope.alerts.push({msg: 'Another alert!'});
+	    $scope.alerts.push({type: 'success' , msg: 'Another alert!'});
 	  };
 
 	  $scope.closeAlert = function(index) {
@@ -130,15 +158,42 @@ app.controller("AlertDemoCtrl",function  ($scope) {
 });
 app.controller("interactiveLogos",function($scope){
 	$scope.styles = ["img-circle img-responsive shadow-z-2 float-img","img-circle img-responsive shadow-z-3 float-img","img-circle img-responsive shadow-z-4 float-img","img-circle img-responsive shadow-z-5 float-img"];
-	$scope.hoverIn = function(){};
-	$scope.hoverOut = function(){};
+
+	$scope.hoverIn = function(){
+		
+		};
+	$scope.hoverOut = function(){
+		};
 });
 app.controller("Buttons",function($scope){
 	$scope.test = {};
 });
 app.controller("imageGallery",function($scope){
-	$scope.test = {};
+
 	$scope.images = ["res/img/galleryImg1.jpg","res/img/galleryImg2.jpg","res/img/galleryImg3.jpg"];
+	$scope.styles = ["","shadow-z-1","shadow-z-2","shadow-z-3"];
+	$scope.class = $scope.styles[0];
+	var e = angular.element.find('img');
+	var count = 0;
+	$scope.hoverIn = function(){
+			for(var i =0;i++;i = e.length){
+				$scope.class= $scope.styles[++count];
+				sleep(1000);
+				$scope.class= $scope.styles[++count];
+				sleep(1000);
+				$scope.class= $scope.styles[++count];
+			}	
+		};
+	$scope.hoverOut = function(){
+		for(var i =0;i++;i = e.length){
+			$scope.class= $scope.styles[--count];
+			sleep(1000);
+			$scope.class= $scope.styles[--count];
+			sleep(1000);
+			$scope.class= $scope.styles[--count];
+			
+		}
+		}; 
 });
 app.controller("DOMControl",function($scope){
 	$scope.test = {};
