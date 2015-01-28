@@ -63,11 +63,11 @@
 				</p>
 			</div>
 			<div class="col-md-7" data-ng-controller="imageGallery">
-				<div class='gallery' ng-show="product.images.length">
-					<img ng-src="{{product.images[0]}}" />
-					<ul class="list-inline thumbs">
-						<li class="thumbnail" ng-repeat="image in product.images"><img
-							ng-src="{{image}}" /></li>
+				<div class='gallery' data-ng-show="images.length">
+	<!--  				<img ng-src="{{images[0]}}" /> -->
+					<ul class="list-inline ">
+						<li data-ng-repeat="image in images"><img
+							data-ng-src="{{image}}" /></li>
 					</ul>
 				</div>
 			</div>
@@ -129,14 +129,8 @@ app.controller("AlertDemoCtrl",function  ($scope) {
 	  };
 });
 app.controller("interactiveLogos",function($scope){
-	$scope.shadows = {"img-circle img-responsive shadow-z-2 float-img",
-			"img-circle img-responsive shadow-z-3 float-img",
-			"img-circle img-responsive shadow-z-4 float-img",
-			"img-circle img-responsive shadow-z-5 float-img"};
-	$scope.startPos = 0;
-	$scope.hoverIn = function(){
-			somethingsomthing.class =  $scope.shadows[$startPos];
-		};
+	$scope.styles = ["img-circle img-responsive shadow-z-2 float-img","img-circle img-responsive shadow-z-3 float-img","img-circle img-responsive shadow-z-4 float-img","img-circle img-responsive shadow-z-5 float-img"];
+	$scope.hoverIn = function(){};
 	$scope.hoverOut = function(){};
 });
 app.controller("Buttons",function($scope){
@@ -144,6 +138,7 @@ app.controller("Buttons",function($scope){
 });
 app.controller("imageGallery",function($scope){
 	$scope.test = {};
+	$scope.images = ["res/img/galleryImg1.jpg","res/img/galleryImg2.jpg","res/img/galleryImg3.jpg"];
 });
 app.controller("DOMControl",function($scope){
 	$scope.test = {};
