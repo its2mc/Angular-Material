@@ -46,7 +46,7 @@ function sleep(milliseconds){
 					<div class="row">
 						<div class="col-md-4">
 							<img class="img-circle img-responsive shadow-z-2 float-img"
-								src="res/img/icon1.jpg" />
+							src="res/img/icon1.jpg" />
 						</div>
 						<div class="col-md-4">
 							<img class="img-circle img-responsive shadow-z-2 float-img"
@@ -77,8 +77,8 @@ function sleep(milliseconds){
 				<div class='gallery' data-ng-show="images.length">
 					<ul class="list-inline ">
 						<li data-ng-repeat="image in images"><img
-							data-ng-src="{{image}}" class="btn btn-default"
-							ng-click="hoverIn()" /></li>
+							data-ng-src="{{image}}" 
+							data-ng-hide="!isCurrentSlideIndex($index)"/></li>
 					</ul>
 				</div>
 			</div>
@@ -88,22 +88,31 @@ function sleep(milliseconds){
 	<div class="container">
 		<div class="row featurette">
 			<div class="col-md-7" data-ng-controller="Buttons">
-				<button class="btn btn-material-blue-light-blue-700">
-					500
+				<div class="row">
+				<button class="btn btn-primary" data-ng-click="genAlert()">
+					Generate Alert
 					<div class="ripple-wrapper"></div>
 				</button>
-				<button class="btn btn-material-blue-light-cyan-700">
-					500
+				</div>
+				<div class="row">
+				<button class="btn btn-primary" data-ng-click="showText()">
+					Show Text
 					<div class="ripple-wrapper"></div>
 				</button>
-				<button class="btn btn-material-blue-blue-700">
-					500
+				</div>
+				<div class="row">
+				<button class="btn btn-primary" data-ng-click="getJSON()">
+					JSON XHR Retrieval
 					<div class="ripple-wrapper"></div>
 				</button>
-				<button class="btn btn-material-blue-indigo-700">
-					500
+				</div>
+				<div class="row">
+				<button class="btn btn-primary" data-ng-click="getXML()">
+					XML XHR Retrieval
 					<div class="ripple-wrapper"></div>
 				</button>
+				</div>
+				
 			</div>
 			<div class="col-md-5">
 				<h2 class="featurette-heading">Angular JS Action Buttons</h2>
@@ -194,6 +203,15 @@ app.controller("imageGallery",function($scope){
 			
 		}
 		}; 
+		$scope.currentIndex = 0;
+
+        $scope.setCurrentSlideIndex = function (index) {
+            $scope.currentIndex = index;
+        };
+
+        $scope.isCurrentSlideIndex = function (index) {
+            return $scope.currentIndex === index;
+        };
 });
 app.controller("DOMControl",function($scope){
 	$scope.test = {};
