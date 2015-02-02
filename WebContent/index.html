@@ -106,7 +106,7 @@ function sleep(milliseconds){
 				</div>
 				<div class="row">
 					<button class="btn btn-primary" data-ng-click="getJSON()">
-						JSON XHR Retrieval 
+						JSON XHR Retrieval
 						<div class="ripple-wrapper"></div>
 					</button>
 					<span>{{jsonText}}</span>
@@ -154,30 +154,33 @@ function sleep(milliseconds){
 					interact with the bootstrap styled DOM. </element>
 				</p>
 			</div>
-			<div class="col-md-7" data-ng-controller="DOMControl">
-				<div class="row">
-					<button class="btn btn-primary" data-ng-click="generateAlert()">
+			<div class="col-md-7" data-ng-controller="DOMControl" style="{{bckgndColor}}">
+				<div class="row" >
+					<button class="btn btn-primary" data-ng-click="chngBackgroundColor()">
 						Change Background Color
 						<div class="ripple-wrapper"></div>
 					</button>
 				</div>
 				<div class="row">
-					<button class="btn btn-primary" data-ng-click="toggleText()">
+					<button class="btn btn-primary" data-ng-show="btnShow"
+						data-ng-click="removeBtn()">
 						Click to Remove Button
 						<div class="ripple-wrapper"></div>
 					</button>
 				</div>
 				<div class="row">
-					<button class="btn btn-primary" data-ng-click="getJSON()">
+					<button class="btn btn-primary" data-ng-click="restoreBtn()">
 						Click to Restore Button
 						<div class="ripple-wrapper"></div>
 					</button>
 				</div>
 				<div class="row">
-					<button class="btn btn-primary" data-ng-click="getXML()">
+					<button class="btn btn-primary" data-ng-click="chngTxtColor()">
 						Change Text Color
 						<div class="ripple-wrapper"></div>
 					</button>
+					<span style="{{styleVar}}">This is the text that will change color, I
+						hope.</span>
 				</div>
 			</div>
 		</div>
@@ -243,7 +246,7 @@ app.controller("imageGallery",function($scope){
     };
 });
 
-app.controller("Buttons",function($scope){
+app.controller("Buttons",function($scope,$http){
 	$scope.alertHide = true;
 	$scope.textShow = false;
 	$scope.alertTitle = "Sample Alert Title.";
@@ -273,20 +276,24 @@ app.controller("Buttons",function($scope){
 });
 
 app.controller("DOMControl",function($scope){
+	$scope.btnShow = true;
+	$scope.styleVar = "";
+	$scope.bckgndColor = "";
 	$scope.chngBackgroundColor = function(){
+		$scope.bckgndColor = ($scope.bckgndColor == "") ? "background-color: red": "";
 		};
 	$scope.removeBtn = function(){
+		$scope.btnShow = false;
 		};
-	$scope.restorBtn = function(){
+	$scope.restoreBtn = function(){
+		$scope.btnShow = true;
 		};
 	$scope.chngTxtColor = function(){
+		$scope.styleVar = ($scope.styleVar == "color:green") ? "color:red" : "color:green" ;
 		};
 });
 </script>
 	</div>
-
-
-
 	<hr class="featurette-divider">
 	<footer>
 		<div class="container-fluid">
