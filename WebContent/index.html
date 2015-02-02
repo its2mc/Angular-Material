@@ -46,7 +46,7 @@ function sleep(milliseconds){
 					<div class="row">
 						<div class="col-md-4">
 							<img class="img-circle img-responsive shadow-z-2 float-img"
-							src="res/img/icon1.jpg" />
+								src="res/img/icon1.jpg" />
 						</div>
 						<div class="col-md-4">
 							<img class="img-circle img-responsive shadow-z-2 float-img"
@@ -70,16 +70,19 @@ function sleep(milliseconds){
 				<h2 class="featurette-heading">Angular JS Image Gallery Sample</h2>
 				<p class="lead">
 					<element> This applet shows the compatibility of Angular
-					js on a material design bootstrap framework. </element>
+					js on a material design bootstrap framework. Click on the image to
+					move to the next slide. </element>
 				</p>
 			</div>
 			<div class="col-md-7" data-ng-controller="imageGallery">
 				<div class='gallery' data-ng-show="images.length">
-					<ul class="list-inline ">
-						<li data-ng-repeat="image in images"><img
-							data-ng-src="{{image}}" 
-							data-ng-hide="!isCurrentSlideIndex($index)"/></li>
-					</ul>
+					<div data-ng-repeat="image in images">
+						<img class="btn" style="margin-left: 200px;"
+							data-ng-src="{{image}}"
+							data-ng-hide="!isCurrentSlideIndex($index)"
+							data-ng-click="nextSlide()" />
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -89,30 +92,47 @@ function sleep(milliseconds){
 		<div class="row featurette">
 			<div class="col-md-7" data-ng-controller="Buttons">
 				<div class="row">
-				<button class="btn btn-primary" data-ng-click="genAlert()">
-					Generate Alert
-					<div class="ripple-wrapper"></div>
-				</button>
+					<button class="btn btn-primary" data-ng-click="toggleAlert()">
+						Generate Alert
+						<div class="ripple-wrapper"></div>
+					</button>
 				</div>
 				<div class="row">
-				<button class="btn btn-primary" data-ng-click="showText()">
-					Show Text
-					<div class="ripple-wrapper"></div>
-				</button>
+					<button class="btn btn-primary" data-ng-click="toggleText()">
+						Show Text
+						<div class="ripple-wrapper"></div>
+					</button>
+					<span ng-hide="textShow">This text plays peek-a-boo!!!</span>
 				</div>
 				<div class="row">
-				<button class="btn btn-primary" data-ng-click="getJSON()">
-					JSON XHR Retrieval
-					<div class="ripple-wrapper"></div>
-				</button>
+					<button class="btn btn-primary" data-ng-click="getJSON()">
+						JSON XHR Retrieval 
+						<div class="ripple-wrapper"></div>
+					</button>
+					<span>{{jsonText}}</span>
 				</div>
 				<div class="row">
-				<button class="btn btn-primary" data-ng-click="getXML()">
-					XML XHR Retrieval
-					<div class="ripple-wrapper"></div>
-				</button>
+					<button class="btn btn-primary" data-ng-click="getXML()">
+						XML XHR Retrieval
+						<div class="ripple-wrapper"></div>
+					</button>
+					<span>{{xmlText}}</span>
 				</div>
-				
+				<div id="source-modal" class="modal fade in" tabindex="-1"
+					data-ng-hide="alertHide" style="display: block;">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true" data-ng-click="toggleAlert()">×</button>
+								<h4 class="modal-title">{{alertTitle}}</h4>
+							</div>
+							<div class="modal-body">
+								<pre>{{alertMsg}} </pre>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="col-md-5">
 				<h2 class="featurette-heading">Angular JS Action Buttons</h2>
@@ -120,6 +140,7 @@ function sleep(milliseconds){
 					<element> This applet shows some bootstrap buttons
 					running angular js scripts and actions. </element>
 				</p>
+
 			</div>
 		</div>
 	</div>
@@ -133,7 +154,32 @@ function sleep(milliseconds){
 					interact with the bootstrap styled DOM. </element>
 				</p>
 			</div>
-			<div class="col-md-7" data-ng-controller="DOMControl"></div>
+			<div class="col-md-7" data-ng-controller="DOMControl">
+				<div class="row">
+					<button class="btn btn-primary" data-ng-click="generateAlert()">
+						Change Background Color
+						<div class="ripple-wrapper"></div>
+					</button>
+				</div>
+				<div class="row">
+					<button class="btn btn-primary" data-ng-click="toggleText()">
+						Click to Remove Button
+						<div class="ripple-wrapper"></div>
+					</button>
+				</div>
+				<div class="row">
+					<button class="btn btn-primary" data-ng-click="getJSON()">
+						Click to Restore Button
+						<div class="ripple-wrapper"></div>
+					</button>
+				</div>
+				<div class="row">
+					<button class="btn btn-primary" data-ng-click="getXML()">
+						Change Text Color
+						<div class="ripple-wrapper"></div>
+					</button>
+				</div>
+			</div>
 		</div>
 
 	</div>
@@ -174,47 +220,67 @@ app.controller("interactiveLogos",function($scope){
 	$scope.hoverOut = function(){
 		};
 });
-app.controller("Buttons",function($scope){
-	$scope.test = {};
-});
+
 app.controller("imageGallery",function($scope){
 
 	$scope.images = ["res/img/galleryImg1.jpg","res/img/galleryImg2.jpg","res/img/galleryImg3.jpg"];
-	$scope.styles = ["","shadow-z-1","shadow-z-2","shadow-z-3"];
-	$scope.class = $scope.styles[0];
+
 	var e = angular.element.find('img');
+
 	var count = 0;
-	$scope.hoverIn = function(){
-			for(var i =0;i++;i = e.length){
-				$scope.class= $scope.styles[++count];
-				sleep(1000);
-				$scope.class= $scope.styles[++count];
-				sleep(1000);
-				$scope.class= $scope.styles[++count];
-			}	
-		};
-	$scope.hoverOut = function(){
-		for(var i =0;i++;i = e.length){
-			$scope.class= $scope.styles[--count];
-			sleep(1000);
-			$scope.class= $scope.styles[--count];
-			sleep(1000);
-			$scope.class= $scope.styles[--count];
-			
-		}
-		}; 
-		$scope.currentIndex = 0;
+	$scope.currentIndex = 0;
 
-        $scope.setCurrentSlideIndex = function (index) {
-            $scope.currentIndex = index;
-        };
+    $scope.setCurrentSlideIndex = function (index) {
+	    $scope.currentIndex = index;
+    };
 
-        $scope.isCurrentSlideIndex = function (index) {
-            return $scope.currentIndex === index;
-        };
+    $scope.isCurrentSlideIndex = function (index) {
+        return $scope.currentIndex === index;
+    };
+
+    $scope.nextSlide = function () {
+        $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.images.length - 1;
+    };
 });
+
+app.controller("Buttons",function($scope){
+	$scope.alertHide = true;
+	$scope.textShow = false;
+	$scope.alertTitle = "Sample Alert Title.";
+	$scope.alertMsg = "This is a sample Alert Message.";
+	$scope.xmlText = "Click to download xml";
+	$scope.jsonText = "Click to download json";
+	$scope.generateAlert = function(){
+		$scope.alertHide = true;
+		$scope.alertMsg = "To test if the button is working.";
+	};
+	$scope.toggleAlert = function(){
+		$scope.alertHide = ($scope.alertHide == true) ? false:true;
+	};
+	$scope.toggleText = function(){
+		$scope.textShow = ($scope.textShow == true) ? false:true ;
+	};
+	$scope.getJSON = function(){
+		$http.get('res/dataSource/dataJSON.json').success(function(data) {
+		    $scope.jsonText = data;
+	    });
+	};
+	$scope.getXML = function(){
+		$http.get('res/dataSource/dataXML.xml').success(function(data) {
+			$scope.xmlText = data;
+	    });
+	};
+});
+
 app.controller("DOMControl",function($scope){
-	$scope.test = {};
+	$scope.chngBackgroundColor = function(){
+		};
+	$scope.removeBtn = function(){
+		};
+	$scope.restorBtn = function(){
+		};
+	$scope.chngTxtColor = function(){
+		};
 });
 </script>
 	</div>
