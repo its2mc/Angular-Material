@@ -1,2 +1,2 @@
 # Angular-Material
-a sample implementation of bootstrap material design with angular js
+A sample implementation of bootstrap material design with angularjs
