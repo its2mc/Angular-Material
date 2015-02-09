@@ -1,4 +1,4 @@
-var app = angular.module('alkiraApp', ['ngMaterial']);
+var app = angular.module('alkiraApp', ['ngMaterial'])
 
 app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
 	  $scope.toggleSidenav = function(menuId) {
@@ -51,20 +51,23 @@ app.controller("imageGallery",function($scope){
   };
 });
 
-app.controller("Buttons",function($scope,$http){
-	$scope.alertHide = true;
+app.controller("Buttons",function($scope,$http,$mdDialog){
 	$scope.textShow = false;
 	$scope.alertTitle = "Sample Alert Title.";
 	$scope.alertMsg = "This is a sample Alert Message.";
+	$scope.label = "";
 	$scope.xmlText = "Click to download xml";
 	$scope.jsonText = "Click to download json";
-	$scope.generateAlert = function(){
-		$scope.alertHide = true;
-		$scope.alertMsg = "To test if the button is working.";
-	};
-	$scope.toggleAlert = function(){
-		$scope.alertHide = ($scope.alertHide == true) ? false:true;
-	};
+	$scope.showAlert = function(ev) {
+	    $mdDialog.show(
+	      $mdDialog.alert()
+	        .title($scope.alertTitle)
+	        .content($scope.alertMsg)
+	        .ariaLabel($scope.label)
+	        .ok('OK')
+	        .targetEvent(ev)
+	    );
+	  };
 	$scope.toggleText = function(){
 		$scope.textShow = ($scope.textShow == true) ? false:true ;
 	};

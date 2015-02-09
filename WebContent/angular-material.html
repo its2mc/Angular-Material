@@ -8,7 +8,7 @@
 <title>Starting Out (angular js)</title>
 </head>
 <body layout="column">
-	<md-toolbar class="md-tall md-whiteframe-z1">
+	<md-toolbar class="md-tall md-whiteframe-z1" style="background-color:#616161">
 		<div layout="row">
 			<h1>Alkira Co.</h1>
 		</div>
@@ -24,7 +24,7 @@
 					ng-src="res/img/icon3.jpg" />
 		</div>
 	</md-toolbar>
-	<md-content class="md-padding">
+	<md-content class="md-padding" style="background-color:#F5F3F3">
 		<div style="width:100%;height:150px;"></div>
 		<div class="md-padding" layout="row" layout-wrap layout-align-md="center">
 			<div flex="40">
@@ -53,7 +53,7 @@
 		<div class="md-padding" layout="row" layout-wrap>
 			<div flex="60" layout="column" data-ng-controller="Buttons"  layout="column" layout-align="space-around">
 				<div layout="row">
-					<md-button class="md-raised md-primary" data-ng-click="toggleAlert()">
+					<md-button class="md-raised md-primary" data-ng-click="showAlert()">
 						Generate Alert
 					</md-button>
 				</div>
@@ -74,21 +74,6 @@
 						XML XHR Retrieval
 					</md-button>
 					<span>{{xmlText}}</span>
-				</div>
-				<div id="source-modal" class="modal fade in" tabindex="-1"
-					data-ng-hide="alertHide" style="display: block;">
-					<div class="modal-dialog modal-lg">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-hidden="true" data-ng-click="toggleAlert()">×</button>
-								<h4 class="modal-title">{{alertTitle}}</h4>
-							</div>
-							<div class="modal-body">
-								<pre>{{alertMsg}} </pre>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 			<div flex="40" layout-align-md="center" >
@@ -112,7 +97,7 @@
 					interact with the bootstrap styled DOM. </element>
 				</p>
 			</div>
-			<div flex="60" data-ng-controller="DOMControl" layout="column" layout-align="space-around" >
+			<div flex="60" data-ng-controller="DOMControl" layout="column" layout-align="space-around" style="{{bckgndColor}}">
 				<div layout="row">
 					<md-button class="md-raised md-primary"
 						data-ng-click="chngBackgroundColor()">
@@ -134,7 +119,7 @@
 					<md-button class="md-raised md-primary" data-ng-click="chngTxtColor()">
 						Change Text Color
 					</md-button>
-					<span style="">This is the text that will change color, I
+					<span style="{{styleVar}}">This is the text that will change color, I
 						hope.
 					</span>
 				</div>
@@ -161,10 +146,10 @@
 		<div class="divider-padding"></div>
 		<md-divider></md-divider>
 	</md-content>
-	<div class="divider-padding"></div>
+	<div class="divider-padding"  style="background-color:#536DFE"></div>
 
-	<footer class="md-whiteframe-z1">
-		<md-content class="md-padding">
+	<footer class="md-whiteframe-z1"  style="background-color:#536DFE" >
+		<md-content class="md-padding" style="background-color:#536DFE">
 			<p class="pull-right">
 				<a href="#">Back to top</a>
 			</p>
