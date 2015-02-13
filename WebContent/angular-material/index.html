@@ -1,0 +1,179 @@
+<html lang="en" ng-app="alkiraApp">
+<head>
+
+<!-- Angular Material CSS now available via Google CDN; version 0.7 used here -->
+<link rel="stylesheet"
+	href="//ajax.googleapis.com/ajax/libs/angular_material/0.7.0/angular-material.min.css">
+<link rel="stylesheet" href="style.css">
+<title>Starting Out (angular js)</title>
+</head>
+<body layout="column">
+	<md-toolbar class="md-tall md-whiteframe-z1" style="background-color:#616161">
+		<div layout="row">
+			<h1>Alkira Co.</h1>
+		</div>
+		<div layout="row">We aim to make the best products that suite
+				your needs.
+		</div>
+		<div layout="row" layout-align="space-around center">
+			<img class="face md-whiteframe-z2 float-img"
+							ng-src="../res/img/icon1.jpg" />
+			<img class="face md-whiteframe-z2 float-img"
+						ng-src="../res/img/icon2.jpg" "/>
+			<img class="face md-whiteframe-z2 float-img"
+					ng-src="../res/img/icon3.jpg" />
+		</div>
+	</md-toolbar>
+	<md-content class="md-padding" style="background-color:#F5F3F3">
+		<div style="width:100%;height:150px;"></div>
+		<div class="md-padding" layout="row" layout-wrap layout-align-md="center">
+			<div flex="40">
+				<h2>Angular JS Image Gallery Sample</h2>
+				<p>
+					<element> This applet shows the compatibility of Angular js
+					on a material design bootstrap framework. Click on the image to move
+					to the next slide. </element>
+				</p>
+			</div>
+			<div flex="60" layout-align-md="center" data-ng-controller="imageGallery">
+				<div class='gallery' data-ng-show="images.length">
+					<div data-ng-repeat="image in images">
+						<img class="btn" style="margin-left: 200px;" data-ng-src="{{image}}"
+							data-ng-hide="!isCurrentSlideIndex($index)"
+							data-ng-click="nextSlide()" />
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="divider-padding"></div>
+		<md-divider></md-divider>
+		<div class="divider-padding"></div>
+		
+		<div class="md-padding" layout="row" layout-wrap>
+			<div flex="60" layout="column" data-ng-controller="Buttons"  layout="column" layout-align="space-around">
+				<div layout="row">
+					<md-button class="md-raised md-primary" data-ng-click="showAlert()">
+						Generate Alert
+					</md-button>
+				</div>
+				<div layout="row">
+					<md-button class="md-raised md-primary" data-ng-click="toggleText()">
+						Show Text
+					</md-button>
+					<span ng-hide="textShow">This text plays peek-a-boo!!!</span>
+				</div>
+				<div layout="row">
+					<md-button class="md-raised md-primary" data-ng-click="getJSON()">
+						JSON XHR Retrieval
+					</md-button>
+					<span>{{jsonText}}</span>
+				</div>
+				<div layout="row">
+					<md-button class="md-raised md-primary" data-ng-click="getXML()">
+						XML XHR Retrieval
+					</md-button>
+					<span>{{xmlText}}</span>
+				</div>
+			</div>
+			<div flex="40" layout-align-md="center" >
+				<h2>Angular JS Action Buttons</h2>
+				<p>
+					<element> This applet shows some bootstrap buttons
+					running angular js scripts and actions. </element>
+				</p>
+			</div>
+		</div>
+
+		<div class="divider-padding"></div>
+		<md-divider></md-divider>
+		<div class="divider-padding"></div>
+	
+		<div layout="row">
+			<div flex="40" layout-align-md="center" >
+				<h2>DOM Interactor</h2>
+				<p>
+					<element> This applet shows how angular js can easily
+					interact with the bootstrap styled DOM. </element>
+				</p>
+			</div>
+			<div flex="60" data-ng-controller="DOMControl" layout="column" layout-align="space-around" style="{{bckgndColor}}">
+				<div layout="row">
+					<md-button class="md-raised md-primary"
+						data-ng-click="chngBackgroundColor()">
+						Change Background Color
+					</md-button>
+				</div>
+				<div layout="row">
+					<md-button class="md-raised md-primary" data-ng-show="btnShow"
+						data-ng-click="removeBtn()">
+						Click to Remove Button
+					</md-button>
+				</div>
+				<div layout="row">
+					<md-button class="md-raised md-primary" data-ng-click="restoreBtn()">
+						Click to Restore Button
+					</md-button>
+				</div>
+				<div layout="row">
+					<md-button class="md-raised md-primary" data-ng-click="chngTxtColor()">
+						Change Text Color
+					</md-button>
+					<span style="{{styleVar}}">This is the text that will change color, I
+						hope.
+					</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="divider-padding"></div>
+		<md-divider></md-divider>
+		<div class="divider-padding"></div>
+	
+		<div layout="row">
+			<div data-ng-controller="AlertDemoCtrl" layout-align-md="center" >
+				<p>
+					<alert ng-repeat="alert in alerts" type="{{alert.type}}"
+						close="closeAlert($index)">{{alert.msg}}</alert>
+				</p>
+				<p>
+					<md-button class="md-raised md-primary" ng-click="addAlert()">Add
+						Alert</md-button>
+				</p>
+			</div>
+		</div>
+		
+		<div class="divider-padding"></div>
+		<md-divider></md-divider>
+	</md-content>
+	<div class="divider-padding"  style="background-color:#536DFE"></div>
+
+	<footer class="md-whiteframe-z1"  style="background-color:#536DFE" >
+		<md-content class="md-padding" style="background-color:#536DFE">
+			<p class="pull-right">
+				<a href="#">Back to top</a>
+			</p>
+			<p>
+				© 2014 Alkira International, Inc. · 
+				<a href="#">Privacy</a> · 
+				<a href="#">Terms</a>
+			</p>
+		</md-content>
+	</footer>
+	<!--Dependency Importation-->
+	<!-- Angular Material Dependencies -->
+	<script src="//cdn.jsdelivr.net/hammerjs/2.0.4/hammer.min.js"></script>
+	<!-- Angular Material Dependencies -->
+	<script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.min.js"></script>
+
+	<!-- Angular Material Javascript now available via Google CDN; version 0.7 used here -->
+	<script
+		src="//ajax.googleapis.com/ajax/libs/angular_material/0.7.0/angular-material.min.js"></script>
+	<script src="alkiraApp.js"></script>
+</body>
+</html>
