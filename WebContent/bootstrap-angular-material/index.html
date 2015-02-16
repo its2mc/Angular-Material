@@ -30,11 +30,11 @@
 				<h1>Alkira Co.</h1>
 				<p>We aim to make the best products that suite your needs.</p>
 				<div layout="row" layout-align="space-around center">
-					<img class="img-circle  shadow-z-2 float-img"
+					<img class="img-circle shadow-z-2 float-img"
 						ng-src="../res/img/icon1.jpg" /> <img
-						class="img-circle  shadow-z-2 float-img"
+						class="img-circle shadow-z-2 float-img"
 						ng-src="../res/img/icon2.jpg" "/> <img
-						class="img-circle  shadow-z-2 float-img"
+						class="img-circle shadow-z-2 float-img"
 						ng-src="../res/img/icon3.jpg" />
 				</div>
 
@@ -55,8 +55,8 @@
 				</p>
 			</div>
 			<div class="col-md-7" data-ng-controller="imageGallery">
-				<div class='gallery' data-ng-show="images.length">
-					<div data-ng-repeat="image in images">
+				<div class='gallery animate-img' data-ng-show="images.length">
+					<div data-ng-repeat="image in images" class='animate-img'>
 						<img style="margin-left: 200px;"
 							data-ng-src="{{image}}"
 							data-ng-hide="!isCurrentSlideIndex($index)"
