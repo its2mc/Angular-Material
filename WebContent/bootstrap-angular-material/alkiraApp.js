@@ -1,24 +1,30 @@
-var app = angular.module('alkiraApp', ['ngMaterial'])
+var app = angular.module('alkiraApp', ['ngMaterial','slideAnimation']);
+	app.config(function($mdThemingProvider) {
+		$mdThemingProvider.theme('default')
+		.primaryPalette('teal')
+		.accentPalette('grey')
+		.backgroundPalette('grey');
+	});
 
 app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
-	  $scope.toggleSidenav = function(menuId) {
+	$scope.toggleSidenav = function(menuId) {
 	    $mdSidenav(menuId).toggle();
-	  };
+	};
 }]);
 
 app.controller("AlertDemoCtrl",function  ($scope) {
-	  $scope.alerts = [
+	$scope.alerts = [
 	    { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
 	    { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
-	  ];
+	];
 
-	  $scope.addAlert = function() {
-	    $scope.alerts.push({type: 'success' , msg: 'Another alert!'});
-	  };
+	$scope.addAlert = function() {
+		$scope.alerts.push({type: 'success' , msg: 'Another alert!'});
+	};
 
-	  $scope.closeAlert = function(index) {
-	    $scope.alerts.splice(index, 1);
-	  };
+	$scope.closeAlert = function(index) {
+		$scope.alerts.splice(index, 1);
+	};
 });
 app.controller("interactiveLogos",function($scope){
 	$scope.styles = ["img-circle img-responsive shadow-z-2 float-img","img-circle img-responsive shadow-z-3 float-img","img-circle img-responsive shadow-z-4 float-img","img-circle img-responsive shadow-z-5 float-img"];
@@ -34,40 +40,33 @@ app.controller("imageGallery",function($scope){
 
 	$scope.images = ["../res/img/galleryImg1.jpg","../res/img/galleryImg2.jpg","../res/img/galleryImg3.jpg"];
 
-
 	var count = 0;
 	$scope.currentIndex = 0;
 
-  $scope.setCurrentSlideIndex = function (index) {
+	$scope.setCurrentSlideIndex = function (index) {
 	    $scope.currentIndex = index;
-  };
+	};
 
-  $scope.isCurrentSlideIndex = function (index) {
-      return $scope.currentIndex === index;
-  };
+	$scope.isCurrentSlideIndex = function (index) {
+		return $scope.currentIndex === index;
+	};
 
-  $scope.nextSlide = function () {
-      $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.images.length - 1;
-  };
+	$scope.nextSlide = function () {
+		$scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.images.length - 1;
+	};
 });
 
 app.controller("Buttons",function($scope,$http,$mdDialog){
 	$scope.textShow = false;
+	$scope.alertHide = true;
 	$scope.alertTitle = "Sample Alert Title.";
 	$scope.alertMsg = "This is a sample Alert Message.";
 	$scope.label = "";
 	$scope.xmlText = "Click to download xml";
 	$scope.jsonText = "Click to download json";
-	$scope.showAlert = function(ev) {
-	    $mdDialog.show(
-	      $mdDialog.alert()
-	        .title($scope.alertTitle)
-	        .content($scope.alertMsg)
-	        .ariaLabel($scope.label)
-	        .ok('OK')
-	        .targetEvent(ev)
-	    );
-	  };
+	$scope.toggleAlert = function() {
+		$scope.alertHide = ($scope.alertHide == true) ? false : true;
+	};
 	$scope.toggleText = function(){
 		$scope.textShow = ($scope.textShow == true) ? false:true ;
 	};

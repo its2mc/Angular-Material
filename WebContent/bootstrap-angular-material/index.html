@@ -16,11 +16,14 @@
 
 <!-- Angular Material CSS now available via Google CDN; version 0.7 used here -->
 <link rel="stylesheet"
-	href="//ajax.googleapis.com/ajax/libs/angular_material/0.7.0/angular-material.min.css">
+	href="//rawgit.com/angular/bower-material/master/angular-material.css">
+
+<!-- Animations css -->
+<link rel="stylesheet" href="animations.css">
 
 <title>AngularjsMaterial-BootstrapMaterial</title>
 </head>
-<body>
+<body class="md-accent">
 	<div class="navbar-wrapper">
 		<nav class="navbar navbar-default">
 			<div class="container">
@@ -54,7 +57,7 @@
 			<div class="col-md-7" data-ng-controller="imageGallery">
 				<div class='gallery' data-ng-show="images.length">
 					<div data-ng-repeat="image in images">
-						<img class="btn" style="margin-left: 200px;"
+						<img style="margin-left: 200px;"
 							data-ng-src="{{image}}"
 							data-ng-hide="!isCurrentSlideIndex($index)"
 							data-ng-click="nextSlide()" />
@@ -68,31 +71,27 @@
 	<div class="container">
 		<div class="row featurette">
 			<div class="col-md-7" data-ng-controller="Buttons">
-				<div class="row">
-					<button class="btn btn-primary" data-ng-click="toggleAlert()">
+				<div layout="row">
+					<md-button class="md-raised md-primary" data-ng-click="toggleAlert()">
 						Generate Alert
-						<div class="ripple-wrapper"></div>
-					</button>
+					</md-button>
 				</div>
-				<div class="row">
-					<button class="btn btn-primary" data-ng-click="toggleText()">
+				<div layout="row">
+					<md-button class="md-raised md-primary" data-ng-click="toggleText()">
 						Show Text
-						<div class="ripple-wrapper"></div>
-					</button>
+					</md-button>
 					<span ng-hide="textShow">This text plays peek-a-boo!!!</span>
 				</div>
-				<div class="row">
-					<button class="btn btn-primary" data-ng-click="getJSON()">
+				<div layout="row">
+					<md-button class="md-raised md-primary" data-ng-click="getJSON()">
 						JSON XHR Retrieval
-						<div class="ripple-wrapper"></div>
-					</button>
+					</md-button>
 					<span>{{jsonText}}</span>
 				</div>
-				<div class="row">
-					<button class="btn btn-primary" data-ng-click="getXML()">
+				<div layout="row">
+					<md-button class="md-raised md-primary" data-ng-click="getXML()">
 						XML XHR Retrieval
-						<div class="ripple-wrapper"></div>
-					</button>
+					</md-button>
 					<span>{{xmlText}}</span>
 				</div>
 				<div id="source-modal" class="modal fade in" tabindex="-1"
@@ -131,33 +130,28 @@
 					interact with the bootstrap styled DOM. </element>
 				</p>
 			</div>
-			<div class="col-md-7" data-ng-controller="DOMControl" style="">
-				<div class="row">
-					<button class="btn btn-primary"
-						data-ng-click="chngBackgroundColor()">
+			<div class="col-md-7" layout="column" layout-align="space-around" data-ng-controller="DOMControl" style="{{bckgndColor}}">
+				<div layout="row">
+					<md-button class="md-raised md-primary" data-ng-click="chngBackgroundColor()">
 						Change Background Color
-						<div class="ripple-wrapper"></div>
-					</button>
+					</md-button>
 				</div>
-				<div class="row">
-					<button class="btn btn-primary" data-ng-show="btnShow"
+				<div layout="row">
+					<md-button class="md-raised md-primary" data-ng-click="btnShow"
 						data-ng-click="removeBtn()">
 						Click to Remove Button
-						<div class="ripple-wrapper"></div>
-					</button>
+					</md-button>
 				</div>
-				<div class="row">
-					<button class="btn btn-primary" data-ng-click="restoreBtn()">
+				<div layout="row">
+					<md-button class="md-raised md-primary" data-ng-click="restoreBtn()">
 						Click to Restore Button
-						<div class="ripple-wrapper"></div>
-					</button>
+					</md-button>
 				</div>
-				<div class="row">
-					<button class="btn btn-primary" data-ng-click="chngTxtColor()">
+				<div layout="row">
+					<md-button class="md-raised md-primary" data-ng-click="chngTxtColor()">
 						Change Text Color
-						<div class="ripple-wrapper"></div>
-					</button>
-					<span style="">This is the text that will change color, I
+					</md-button>
+					<span style="{{styleVar}}">This is the text that will change color, I
 						hope.</span>
 				</div>
 			</div>
@@ -172,9 +166,8 @@
 					close="closeAlert($index)">{{alert.msg}}</alert>
 			</p>
 			<p>
-				<button class='btn btn-default' ng-click="addAlert()">Add
-					Alert</button>
-			</p>
+				<md-button class="md-raised md-primary" data-ng-click="addAlert()">Add
+					Alert</md-button>
 		</div>
 		<hr class="featurette-divider">
 		<footer>
@@ -201,7 +194,9 @@
 
 		<!-- Angular Material Javascript now available via Google CDN; version 0.7 used here -->
 		<script
-			src="//ajax.googleapis.com/ajax/libs/angular_material/0.7.0/angular-material.min.js"></script>
+			src="//rawgit.com/angular/bower-material/master/angular-material.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.js"></script>
 		<script src="alkiraApp.js"></script>
+		<script src="animations.js"></script>
 </body>
 </html>

@@ -72,25 +72,20 @@ app.controller("Buttons", function($scope, $http) {
 	};
 });
 
-app
-		.controller(
-				"DOMControl",
-				function($scope) {
-					$scope.btnShow = true;
-					$scope.styleVar = "";
-					$scope.bckgndColor = "";
-					$scope.chngBackgroundColor = function() {
-						$scope.bckgndColor = ($scope.bckgndColor == "") ? "background-color: red"
-								: "";
-					};
-					$scope.removeBtn = function() {
-						$scope.btnShow = false;
-					};
-					$scope.restoreBtn = function() {
-						$scope.btnShow = true;
-					};
-					$scope.chngTxtColor = function() {
-						$scope.styleVar = ($scope.styleVar == "color:green") ? "color:red"
-								: "color:green";
-					};
-				});
+app.controller("DOMControl",function($scope) {
+	$scope.btnShow = true;
+	$scope.styleVar = "";
+	$scope.bckgndColor = "";
+	$scope.chngBackgroundColor = function() {
+		$scope.bckgndColor = ($scope.bckgndColor == "") ? "background-color: red": "";
+	};
+	$scope.removeBtn = function() {
+		$scope.btnShow = false;
+	};
+	$scope.restoreBtn = function() {
+		$scope.btnShow = true;
+	};
+	$scope.chngTxtColor = function() {
+		$scope.styleVar = ($scope.styleVar == "color:green") ? "color:red": "color:green";
+	};
+});
