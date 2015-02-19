@@ -20,14 +20,11 @@ html {
 
 }
 
-.float-img {
-	position: relative;
-	top:55px;
-	z-index: 100;
-	width: 110px;
-	height: 110px;
-	margin: auto;
- 
+.logo {
+	width: 109px;
+	height: 56px;
+ 	margin-top: 5px;
+ 	margin-botton: 10px;
 }
 
 .md-button {

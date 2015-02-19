@@ -1,9 +1,15 @@
-var app = angular.module('alkiraApp', ['ngMaterial','slideAnimation']);
-	app.config(function($mdThemingProvider) {
+var app = angular.module('alkiraApp', ['ngMaterial','ngRoute']);
+	app.config(function($mdThemingProvider,$routeProvider) {
 		$mdThemingProvider.theme('default')
 		.primaryPalette('teal')
 		.accentPalette('grey')
 		.backgroundPalette('grey');
+		$routeProvider
+		.when('/', {
+			controller: 'imageGallery',
+		    templateUrl: 'template.html'
+		});
+		
 	});
 
 app.controller('AppCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav){
@@ -25,15 +31,6 @@ app.controller("AlertDemoCtrl",function  ($scope) {
 	$scope.closeAlert = function(index) {
 		$scope.alerts.splice(index, 1);
 	};
-});
-app.controller("interactiveLogos",function($scope){
-	$scope.styles = ["img-circle img-responsive shadow-z-2 float-img","img-circle img-responsive shadow-z-3 float-img","img-circle img-responsive shadow-z-4 float-img","img-circle img-responsive shadow-z-5 float-img"];
-
-	$scope.hoverIn = function(){
-		
-		};
-	$scope.hoverOut = function(){
-		};
 });
 
 app.controller("imageGallery",function($scope){

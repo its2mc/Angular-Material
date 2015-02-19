@@ -1,20 +1,14 @@
 <!DOCTYPE html>
-<html data-ng-app="alkiraApp">
+<html lang="en" ng-app="alkiraApp">
 <head>
 <meta charset="UTF-8">
 
-<!-- JQuery Tools -->
-<script src="../res/jquery/jquery.js"></script>
-
 <!-- Bootstrap Tools  -->
-<link href="../res/bootstrap-3.2.0/css/bootstrap.min.css" rel="stylesheet">
-<script src="../res/bootstrap-3.2.0/js/bootstrap.js"></script>
+<link href="../res/bootstrap-3.2.0/css/bootstrap.min.css"
+	rel="stylesheet">
 
-<!-- Angular Js Tools -->
-<script
-	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-<!--  <script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-animate.js"></script>-->
+<!-- Jquery -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 
 <!-- Material Bootstrap Tools -->
 <link href="../dist/css/ripples.min.css" rel="stylesheet">
@@ -22,269 +16,38 @@
 
 <!-- Overriding colour scheme -->
 <link href="style.css" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Starting out</title>
-</head>
-<body>
 
-	<div class="navbar-wrapper">
+<!-- Animation css -->
+<link href="animations.css" rel="stylesheet">
+
+<!-- Angular Material CSS now available via Google CDN; version 0.7 used here -->
+<link rel="stylesheet"
+	href="//rawgit.com/angular/bower-material/master/angular-material.css">
+
+
+<title>AngularjsMaterial-BootstrapMaterial</title>
+</head>
+<body class="md-accent">
+	<div class="navbar-wrapper" style="position:fixed;width:100%;">
 		<nav class="navbar navbar-default">
 			<div class="container">
-				<div class="jumbotron">
-					<h1>Alkira Co.</h1>
-					<p>We aim to make the best products that suite your needs.</p>
-					<div class="row">
-						<div class="col-md-4">
-							<img class="img-circle img-responsive shadow-z-2 float-img"
-								src="../res/img/icon1.jpg" />
-						</div>
-						<div class="col-md-4">
-							<img class="img-circle img-responsive shadow-z-2 float-img"
-								src="../res/img/icon2.jpg" "/>
-						</div>
-						<div class="col-md-4">
-							<img class="img-circle img-responsive shadow-z-2 float-img"
-								src="../res/img/icon3.jpg" />
-						</div>
-					</div>
+				<h1>Alkira Co.</h1>
+				<p>We aim to make the best products that suite your needs.</p>
+				<div layout="row" layout-align="space-around center">
+					<img class="img-circle shadow-z-2 float-img"
+						ng-src="../res/img/icon1.jpg" /> <img
+						class="img-circle shadow-z-2 float-img"
+						ng-src="../res/img/icon2.jpg" "/> <img
+						class="img-circle shadow-z-2 float-img"
+						ng-src="../res/img/icon3.jpg" />
 				</div>
-
 			</div>
-
 		</nav>
 	</div>
-	<div class="row" style="height: 100px;"></div>
-	<div class="container">
-		<div class="row featurette">
-			<div class="col-md-5">
-				<h2 class="featurette-heading">Angular JS Image Gallery Sample</h2>
-				<p class="lead">
-					<element> This applet shows the compatibility of Angular
-					js on a material design bootstrap framework. Click on the image to
-					move to the next slide. </element>
-				</p>
-			</div>
-			<div class="col-md-7" data-ng-controller="imageGallery">
-				<div class='gallery' data-ng-show="images.length">
-					<div data-ng-repeat="image in images">
-						<img class="btn" style="margin-left: 200px;"
-							data-ng-src="{{image}}"
-							data-ng-hide="!isCurrentSlideIndex($index)"
-							data-ng-click="nextSlide()" />
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
+	<div class="row" style="height: 100px;width:100%;"></div>
+	<div ng-view=""></div>
 	<hr class="featurette-divider">
-	<div class="container">
-		<div class="row featurette">
-			<div class="col-md-7" data-ng-controller="Buttons">
-				<div class="row">
-					<button class="btn btn-primary" data-ng-click="toggleAlert()">
-						Generate Alert
-						<div class="ripple-wrapper"></div>
-					</button>
-				</div>
-				<div class="row">
-					<button class="btn btn-primary" data-ng-click="toggleText()">
-						Show Text
-						<div class="ripple-wrapper"></div>
-					</button>
-					<span ng-hide="textShow">This text plays peek-a-boo!!!</span>
-				</div>
-				<div class="row">
-					<button class="btn btn-primary" data-ng-click="getJSON()">
-						JSON XHR Retrieval
-						<div class="ripple-wrapper"></div>
-					</button>
-					<span>{{jsonText}}</span>
-				</div>
-				<div class="row">
-					<button class="btn btn-primary" data-ng-click="getXML()">
-						XML XHR Retrieval
-						<div class="ripple-wrapper"></div>
-					</button>
-					<span>{{xmlText}}</span>
-				</div>
-				<div id="source-modal" class="modal fade in" tabindex="-1"
-					data-ng-hide="alertHide" style="display: block;">
-					<div class="modal-dialog modal-lg">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-hidden="true" data-ng-click="toggleAlert()">×</button>
-								<h4 class="modal-title">{{alertTitle}}</h4>
-							</div>
-							<div class="modal-body">
-								<pre>{{alertMsg}} </pre>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-5">
-				<h2 class="featurette-heading">Angular JS Action Buttons</h2>
-				<p class="lead">
-					<element> This applet shows some bootstrap buttons
-					running angular js scripts and actions. </element>
-				</p>
-
-			</div>
-		</div>
-	</div>
-	<hr class="featurette-divider">
-	<div class="container">
-		<div class="row featurette">
-			<div class="col-md-5">
-				<h2 class="featurette-heading">DOM Interactor</h2>
-				<p class="lead">
-					<element> This applet shows how angular js can easily
-					interact with the bootstrap styled DOM. </element>
-				</p>
-			</div>
-			<div class="col-md-7" data-ng-controller="DOMControl" style="{{bckgndColor}}">
-				<div class="row" >
-					<button class="btn btn-primary" data-ng-click="chngBackgroundColor()">
-						Change Background Color
-						<div class="ripple-wrapper"></div>
-					</button>
-				</div>
-				<div class="row">
-					<button class="btn btn-primary" data-ng-show="btnShow"
-						data-ng-click="removeBtn()">
-						Click to Remove Button
-						<div class="ripple-wrapper"></div>
-					</button>
-				</div>
-				<div class="row">
-					<button class="btn btn-primary" data-ng-click="restoreBtn()">
-						Click to Restore Button
-						<div class="ripple-wrapper"></div>
-					</button>
-				</div>
-				<div class="row">
-					<button class="btn btn-primary" data-ng-click="chngTxtColor()">
-						Change Text Color
-						<div class="ripple-wrapper"></div>
-					</button>
-					<span style="{{styleVar}}">This is the text that will change color, I
-						hope.</span>
-				</div>
-			</div>
-		</div>
-
-	</div>
-	<hr class="featurette-divider">
-	<div class="container">
-		<div data-ng-controller="AlertDemoCtrl">
-			<p>
-				<alert ng-repeat="alert in alerts" type="{{alert.type}}"
-					close="closeAlert($index)">{{alert.msg}}</alert>
-			</p>
-			<p>
-				<button class='btn btn-default' ng-click="addAlert()">Add
-					Alert</button>
-			</p>
-		</div>
-		<script>
-		var app = angular.module("alkiraApp",[]);
-app.controller("AlertDemoCtrl",function  ($scope) {
-	  $scope.alerts = [
-	    { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
-	    { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
-	  ];
-
-	  $scope.addAlert = function() {
-	    $scope.alerts.push({type: 'success' , msg: 'Another alert!'});
-	  };
-
-	  $scope.closeAlert = function(index) {
-	    $scope.alerts.splice(index, 1);
-	  };
-});
-app.controller("interactiveLogos",function($scope){
-	$scope.styles = ["img-circle img-responsive shadow-z-2 float-img","img-circle img-responsive shadow-z-3 float-img","img-circle img-responsive shadow-z-4 float-img","img-circle img-responsive shadow-z-5 float-img"];
-
-	$scope.hoverIn = function(){
-		
-		};
-	$scope.hoverOut = function(){
-		};
-});
-
-app.controller("imageGallery",function($scope){
-
-	$scope.images = ["../res/img/galleryImg1.jpg","../res/img/galleryImg2.jpg","../res/img/galleryImg3.jpg"];
-
-
-	var count = 0;
-	$scope.currentIndex = 0;
-
-    $scope.setCurrentSlideIndex = function (index) {
-	    $scope.currentIndex = index;
-    };
-
-    $scope.isCurrentSlideIndex = function (index) {
-        return $scope.currentIndex === index;
-    };
-
-    $scope.nextSlide = function () {
-        $scope.currentIndex = ($scope.currentIndex > 0) ? --$scope.currentIndex : $scope.images.length - 1;
-    };
-});
-
-app.controller("Buttons",function($scope,$http){
-	$scope.alertHide = true;
-	$scope.textShow = false;
-	$scope.alertTitle = "Sample Alert Title.";
-	$scope.alertMsg = "This is a sample Alert Message.";
-	$scope.xmlText = "Click to download xml";
-	$scope.jsonText = "Click to download json";
-	$scope.generateAlert = function(){
-		$scope.alertHide = true;
-		$scope.alertMsg = "To test if the button is working.";
-	};
-	$scope.toggleAlert = function(){
-		$scope.alertHide = ($scope.alertHide == true) ? false:true;
-	};
-	$scope.toggleText = function(){
-		$scope.textShow = ($scope.textShow == true) ? false:true ;
-	};
-	$scope.getJSON = function(){
-		$http.get('../res/dataSource/dataJSON.json').success(function(data) {
-		    $scope.jsonText = data;
-	    });
-	};
-	$scope.getXML = function(){
-		$http.get('../res/dataSource/dataXML.xml').success(function(data) {
-			$scope.xmlText = data;
-	    });
-	};
-});
-
-app.controller("DOMControl",function($scope){
-	$scope.btnShow = true;
-	$scope.styleVar = "";
-	$scope.bckgndColor = "";
-	$scope.chngBackgroundColor = function(){
-		$scope.bckgndColor = ($scope.bckgndColor == "") ? "background-color: red": "";
-		};
-	$scope.removeBtn = function(){
-		$scope.btnShow = false;
-		};
-	$scope.restoreBtn = function(){
-		$scope.btnShow = true;
-		};
-	$scope.chngTxtColor = function(){
-		$scope.styleVar = ($scope.styleVar == "color:green") ? "color:red" : "color:green" ;
-		};
-});
-</script>
-	</div>
-	<hr class="featurette-divider">
-	<footer>
+	<footer style="width:100%;">
 		<div class="container-fluid">
 			<p class="pull-right">
 				<a href="#">Back to top</a>
@@ -295,5 +58,21 @@ app.controller("DOMControl",function($scope){
 			</p>
 		</div>
 	</footer>
+		<!--Dependency Importation-->
+		<!-- Angular Material Dependencies -->
+		<script src="//cdn.jsdelivr.net/hammerjs/2.0.4/hammer.min.js"></script>
+		<!-- Angular Material Dependencies -->
+		<script
+			src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+		<script
+			src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+		<script
+			src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.min.js"></script>
+
+		<!-- Angular Material Javascript now available via Google CDN; version 0.7 used here -->
+		<script
+			src="//rawgit.com/angular/bower-material/master/angular-material.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.js"></script>
+		<script src="alkiraApp.js"></script>
 </body>
 </html>

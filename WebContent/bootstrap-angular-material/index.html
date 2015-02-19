@@ -7,6 +7,9 @@
 <link href="../res/bootstrap-3.2.0/css/bootstrap.min.css"
 	rel="stylesheet">
 
+<!-- Jquery --> 
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
 <!-- Material Bootstrap Tools -->
 <link href="../dist/css/ripples.min.css" rel="stylesheet">
 <link href="../dist/css/material-wfont.min.css" rel="stylesheet">
@@ -14,12 +17,13 @@
 <!-- Overriding colour scheme -->
 <link href="style.css" rel="stylesheet">
 
+<!-- Animation css -->
+<link href="animations.css" rel="stylesheet">
+
 <!-- Angular Material CSS now available via Google CDN; version 0.7 used here -->
 <link rel="stylesheet"
 	href="//rawgit.com/angular/bower-material/master/angular-material.css">
 
-<!-- Animations css -->
-<link rel="stylesheet" href="animations.css">
 
 <title>AngularjsMaterial-BootstrapMaterial</title>
 </head>
@@ -45,7 +49,7 @@
 	</div>
 	<div class="row" style="height: 100px;"></div>
 	<div class="container">
-		<div class="row featurette">
+		<div class="row featurette" style="min-height:310px;">
 			<div class="col-md-5">
 				<h2 class="featurette-heading">Angular JS Image Gallery Sample</h2>
 				<p class="lead">
@@ -55,12 +59,12 @@
 				</p>
 			</div>
 			<div class="col-md-7" data-ng-controller="imageGallery">
-				<div class='gallery animate-img' data-ng-show="images.length">
-					<div data-ng-repeat="image in images" class='animate-img'>
+				<div data-ng-show="images.length" style="overflow:hidden;">
+					<div data-ng-repeat="image in images" >
 						<img style="margin-left: 200px;"
 							data-ng-src="{{image}}"
 							data-ng-hide="!isCurrentSlideIndex($index)"
-							data-ng-click="nextSlide()" />
+							data-ng-click="nextSlide()" class='repeat-item'/>
 					</div>
 
 				</div>
@@ -71,24 +75,24 @@
 	<div class="container">
 		<div class="row featurette">
 			<div class="col-md-7" data-ng-controller="Buttons">
-				<div layout="row">
+				<div layout="row" style="margin:5px;">
 					<md-button class="md-raised md-primary" data-ng-click="toggleAlert()">
 						Generate Alert
 					</md-button>
 				</div>
-				<div layout="row">
+				<div layout="row" style="margin:5px;">
 					<md-button class="md-raised md-primary" data-ng-click="toggleText()">
 						Show Text
 					</md-button>
 					<span ng-hide="textShow">This text plays peek-a-boo!!!</span>
 				</div>
-				<div layout="row">
+				<div layout="row" style="margin:5px;">
 					<md-button class="md-raised md-primary" data-ng-click="getJSON()">
 						JSON XHR Retrieval
 					</md-button>
 					<span>{{jsonText}}</span>
 				</div>
-				<div layout="row">
+				<div layout="row" style="margin:5px;">
 					<md-button class="md-raised md-primary" data-ng-click="getXML()">
 						XML XHR Retrieval
 					</md-button>
@@ -131,23 +135,23 @@
 				</p>
 			</div>
 			<div class="col-md-7" layout="column" layout-align="space-around" data-ng-controller="DOMControl" style="{{bckgndColor}}">
-				<div layout="row">
+				<div layout="row" style="margin:5px;">
 					<md-button class="md-raised md-primary" data-ng-click="chngBackgroundColor()">
 						Change Background Color
 					</md-button>
 				</div>
-				<div layout="row">
-					<md-button class="md-raised md-primary" data-ng-click="btnShow"
+				<div layout="row" style="margin:5px;">
+					<md-button class="md-raised md-primary" data-ng-show="btnShow"
 						data-ng-click="removeBtn()">
 						Click to Remove Button
 					</md-button>
 				</div>
-				<div layout="row">
+				<div layout="row" style="margin:5px;">
 					<md-button class="md-raised md-primary" data-ng-click="restoreBtn()">
 						Click to Restore Button
 					</md-button>
 				</div>
-				<div layout="row">
+				<div layout="row" style="margin:5px;">
 					<md-button class="md-raised md-primary" data-ng-click="chngTxtColor()">
 						Change Text Color
 					</md-button>
@@ -169,18 +173,19 @@
 				<md-button class="md-raised md-primary" data-ng-click="addAlert()">Add
 					Alert</md-button>
 		</div>
-		<hr class="featurette-divider">
-		<footer>
-			<div class="container-fluid">
-				<p class="pull-right">
-					<a href="#">Back to top</a>
-				</p>
-				<p>
-					© 2014 Alkira International, Inc. · <a href="#">Privacy</a> · <a
-						href="#">Terms</a>
-				</p>
-			</div>
-		</footer>
+	</div>
+	<hr class="featurette-divider">
+	<footer>
+		<div class="container-fluid">
+			<p class="pull-right">
+				<a href="#">Back to top</a>
+			</p>
+			<p>
+				© 2014 Alkira International, Inc. · <a href="#">Privacy</a> · <a
+					href="#">Terms</a>
+			</p>
+		</div>
+	</footer>
 		<!--Dependency Importation-->
 		<!-- Angular Material Dependencies -->
 		<script src="//cdn.jsdelivr.net/hammerjs/2.0.4/hammer.min.js"></script>

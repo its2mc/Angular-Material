@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="alkiraApp">
+<head>
+<meta charset="UTF-8">
+
+<!-- Bootstrap Tools  -->
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!-- Jquery -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+<!-- Material Bootstrap Tools -->
+<link
+	href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.2/css/material-wfont.min.css"
+	rel="stylesheet">
+
+<!-- Overriding colour scheme -->
+<link href="css/style.css" rel="stylesheet">
+
+<!-- Animation css -->
+<link href="css/animations.css" rel="stylesheet">
+
+<!-- Angular Material CSS now available via Google CDN; version 0.7 used here -->
+<link rel="stylesheet"
+	href="//rawgit.com/angular/bower-material/master/angular-material.css">
+
+<title>Alkira Australia</title>
+</head>
+<body>
+
+<div style="margin-top:71px;"></div>
+
+<!-- This is the topbar with the logo and the menu button. -->
+	<div class="navbar-wrapper navbar-fixed-top"
+		style="position: fixed; width: 100%;" data-ng-controller="AppCtrl">
+		
+		<nav class="navbar navbar-default shadow-z-1">
+		
+			<md-button style="margin-left:10px;margin-top:5px;" class="md-fab shadow-z-3"
+				aria-label="Comment" ng-click="toggleLeft()">
+			<md-icon md-svg-src="icons/ic_menu_24px.svg"></md-icon> 
+			
+			</md-button>
+			<p class="pull-right">
+				<span>We aim to make the best products that suite your
+					needs.</span> <img style="margin-right: 10px;" class="shadow-z-2 logo"
+					ng-src="../res/img/alkira.png"></img>
+			</p>
+		</nav>
+	</div>
+
+
+	<!-- Left Side Navigator Menu -->
+	<section layout="row" flex data-ng-controller="AppCtrl">
+		
+		<!-- Left Side Navigator -->
+		<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+		<div style="margin-top:71px;"></div>
+			<md-toolbar class="md-theme-teal">
+        		<h1 class="md-toolbar-tools">Sidenav Left</h1>
+      		</md-toolbar>
+			<md-content class="md-padding" ng-controller="LeftCtrl">
+				<md-button ng-click="close()" class="md-primary" hide-gt-md>
+					Close Sidenav Left </md-button>
+				<p hide-md show-gt-md>This sidenav is locked open on your device.
+					To go back to the default behavior, narrow your display.</p>
+			</md-content> 
+			<div class="container-fluid">
+				<p class="pull-bottom">
+					© 2014 Alkira International, Inc. · <a href="#">Privacy</a> · <a
+						href="#">Terms</a>
+				</p>
+			</div>
+		 </md-sidenav>
+		 
+		<!-- Main Content -->
+		<md-content flex class="md-padding">
+		<div layout="column" layout-fill layout-align="center center">
+			<p>The left sidenav will 'lock open' on a medium (>=960px wide)
+				device.</p>
+			<div>
+				<md-button ng-click="toggleLeft()" class="md-primary">
+				Toggle left </md-button>
+			</div>
+		</div>
+		</md-content>
+		
+	</section>
+
+
+
+
+	<!--Dependency Importation-->
+	<!-- Angular Material Dependencies -->
+	<script src="//cdn.jsdelivr.net/hammerjs/2.0.4/hammer.min.js"></script>
+	<!-- Angular Material Dependencies -->
+	<script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.min.js"></script>
+
+	<!-- Angular Material Javascript now available via Google CDN; version 0.7 used here -->
+	<script
+		src="//rawgit.com/angular/bower-material/master/angular-material.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.js"></script>
+	<script src="js/alkiraApp.js"></script>
+	<script src="js/animations.js"></script>
+</body>
+</html>

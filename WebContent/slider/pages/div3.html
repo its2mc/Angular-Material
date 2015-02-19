@@ -1,10 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<div class="container">
+		<div class="row featurette">
+			<div class="col-md-5">
+				<h2 class="featurette-heading">DOM Interactor</h2>
+				<p class="lead">
+					<element> This applet shows how angular js can easily
+					interact with the bootstrap styled DOM. </element>
+				</p>
+			</div>
+			<div class="col-md-7" layout="column" layout-align="space-around" data-ng-controller="DOMControl" style="{{bckgndColor}}">
+				<div layout="row" style="margin:5px;">
+					<md-button class="md-raised md-primary" data-ng-click="chngBackgroundColor()">
+						Change Background Color
+					</md-button>
+				</div>
+				<div layout="row" style="margin:5px;">
+					<md-button class="md-raised md-primary" data-ng-show="btnShow"
+						data-ng-click="removeBtn()">
+						Click to Remove Button
+					</md-button>
+				</div>
+				<div layout="row" style="margin:5px;">
+					<md-button class="md-raised md-primary" data-ng-click="restoreBtn()">
+						Click to Restore Button
+					</md-button>
+				</div>
+				<div layout="row" style="margin:5px;">
+					<md-button class="md-raised md-primary" data-ng-click="chngTxtColor()">
+						Change Text Color
+					</md-button>
+					<span style="{{styleVar}}">This is the text that will change color, I
+						hope.</span>
+				</div>
+			</div>
+		</div>
 
-</body>
-</html>
+	</div>
+	<hr class="featurette-divider">
+	<div class="container">
+		<div data-ng-controller="AlertDemoCtrl">
+			<p>
+				<alert ng-repeat="alert in alerts" type="{{alert.type}}"
+					close="closeAlert($index)">{{alert.msg}}</alert>
+			</p>
+			<p>
+				<md-button class="md-raised md-primary" data-ng-click="addAlert()">Add
+					Alert</md-button>
+		</div>
+	</div>
