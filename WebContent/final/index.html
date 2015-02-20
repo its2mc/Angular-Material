@@ -3,23 +3,21 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- Bootstrap Tools  -->
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
-	rel="stylesheet">
+<!-- Bootstrap Css  -->
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <!-- Jquery -->
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 
-<!-- Material Bootstrap Tools -->
-<link
-	href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.2/css/material-wfont.min.css"
-	rel="stylesheet">
+<!-- Material Bootstrap Css -->
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.2/css/material-wfont.min.css">
 
 <!-- Overriding colour scheme -->
 <link href="css/style.css" rel="stylesheet">
 
-<!-- Animation css -->
+<!-- Animation Css -->
 <link href="css/animations.css" rel="stylesheet">
 
 <!-- Angular Material CSS now available via Google CDN; version 0.7 used here -->
@@ -30,9 +28,9 @@
 </head>
 <body>
 
-<div style="margin-top:71px;"></div>
-
-<!-- This is the topbar with the logo and the menu button. -->
+ 	<!-- Left Side Navigator Menu -->
+	<section layout="row" flex data-ng-controller="AppCtrl">
+			<!-- This is the top menubar with the logo and the menu button. -->
 	<div class="navbar-wrapper navbar-fixed-top"
 		style="position: fixed; width: 100%;" data-ng-controller="AppCtrl">
 		
@@ -44,55 +42,50 @@
 			
 			</md-button>
 			<p class="pull-right">
-				<span>We aim to make the best products that suite your
-					needs.</span> <img style="margin-right: 10px;" class="shadow-z-2 logo"
+				<span>This is a sample text. Anything can go here.. maybe a motto.</span> 
+				<img style="margin-right: 10px;" class="shadow-z-2 logo img-circle"
 					ng-src="../res/img/alkira.png"></img>
 			</p>
 		</nav>
 	</div>
-
-
-	<!-- Left Side Navigator Menu -->
-	<section layout="row" flex data-ng-controller="AppCtrl">
-		
+	
 		<!-- Left Side Navigator -->
 		<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
 		<div style="margin-top:71px;"></div>
-			<md-toolbar class="md-theme-teal">
-        		<h1 class="md-toolbar-tools">Sidenav Left</h1>
+			<md-toolbar class="menu-bar" data-ng-controller='AppCtrl'>
+        		<h1 class="md-toolbar-tools md-theme-teal md-hue-1" >{{page.menuTitle}}</h1>
       		</md-toolbar>
-			<md-content class="md-padding" ng-controller="LeftCtrl">
-				<md-button ng-click="close()" class="md-primary" hide-gt-md>
-					Close Sidenav Left </md-button>
-				<p hide-md show-gt-md>This sidenav is locked open on your device.
-					To go back to the default behavior, narrow your display.</p>
+			<md-content class="md-padding" >
+				<p hide-md show-gt-md>This sidenav will contain possible menu options,
+				which can be dynamic</p>
+				<p data-ng-controller='AppCtrl'>
+					<md-button  data-ng-click="nextPage()" class="md-primary">
+						Next Page
+					</md-button>
+				</p>
 			</md-content> 
 			<div class="container-fluid">
-				<p class="pull-bottom">
+				<p class="navbar-fixed-bottom" style="margin-top:10px;margin-bottom:10px">
 					© 2014 Alkira International, Inc. · <a href="#">Privacy</a> · <a
 						href="#">Terms</a>
 				</p>
 			</div>
 		 </md-sidenav>
 		 
+		 
 		<!-- Main Content -->
 		<md-content flex class="md-padding">
-		<div layout="column" layout-fill layout-align="center center">
-			<p>The left sidenav will 'lock open' on a medium (>=960px wide)
-				device.</p>
-			<div>
-				<md-button ng-click="toggleLeft()" class="md-primary">
-				Toggle left </md-button>
+			<div style="margin-top:71px;"></div>
+			<div layout="column" layout-fill layout-align="center center">
+				<div class="slide-animate-container">
+    				<div class="slide-animate" data-ng-include="page.url"></div>
+  				</div>
 			</div>
-		</div>
 		</md-content>
-		
 	</section>
 
 
-
-
-	<!--Dependency Importation-->
+<!--Dependency Importation-->
 	<!-- Angular Material Dependencies -->
 	<script src="//cdn.jsdelivr.net/hammerjs/2.0.4/hammer.min.js"></script>
 	<!-- Angular Material Dependencies -->

@@ -1,0 +1,38 @@
+<div class="row" style="height: 100px;"></div>
+<div class="container">
+		<div class="row featurette">
+			<div class="col-md-5">
+				<h2 class="featurette-heading">DOM Interactor</h2>
+				<p class="lead">
+					<element> This applet shows how angular js can easily
+					interact with the bootstrap styled DOM. </element>
+				</p>
+			</div>
+			<div class="col-md-7" layout="column" layout-align="space-around" data-ng-controller="DOMControl" style="{{bckgndColor}}">
+				<div layout="row" style="margin:5px;">
+					<md-button class="md-raised md-primary" data-ng-click="chngBackgroundColor()">
+						Change Background Color
+					</md-button>
+				</div>
+				<div layout="row" style="margin:5px;">
+					<md-button class="md-raised md-primary" data-ng-show="btnShow"
+						data-ng-click="removeBtn()">
+						Click to Remove Button
+					</md-button>
+				</div>
+				<div layout="row" style="margin:5px;">
+					<md-button class="md-raised md-primary" data-ng-click="restoreBtn()">
+						Click to Restore Button
+					</md-button>
+				</div>
+				<div layout="row" style="margin:5px;">
+					<md-button class="md-raised md-primary" data-ng-click="chngTxtColor()">
+						Change Text Color
+					</md-button>
+					<span style="{{styleVar}}">This is the text that will change color, I
+						hope.</span>
+				</div>
+			</div>
+		</div>
+
+	</div>

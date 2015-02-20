@@ -7,12 +7,32 @@ var app = angular.module('alkiraApp', ['ngMaterial']);
 	});
 
 app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $log) {
-		  $scope.toggleLeft = function() {
-		    $mdSidenav('left').toggle()
-		                      .then(function(){
-		                          $log.debug("toggle left is done");
-		                      });
-		  };
+	$scope.activePageNo = 1;
+	$scope.pages = [
+	    {menuTitle : 'Home',url : 'views/home.html'},
+		{menuTitle : 'Contact Us',url : 'views/contactus.html'},
+		{menuTitle : 'About Us',url : 'views/aboutus.html'}
+	];
+	$scope.page = $scope.pages[$scope.activePageNo];
+
+	$scope.toggleLeft = function() {
+	    $mdSidenav('left').toggle()
+	    	.then(function(){
+	    		$log.debug("toggle left is done");
+		});
+	};	  
+	
+	$scope.nextPage = function(){
+		if ($scope.activePageNo < ($scope.pages.length-1)){
+			$scope.page = $scope.pages[++$scope.activePageNo];
+			$log.debug("less than 2");
+		}else {
+			$scope.activePageNo = 0;
+			$scope.page = $scope.pages[$scope.activePageNo];
+			$log.debug("greater than or equal to 2");
+		} 
+		$log.debug($scope.page);
+	};
 });
 
 app.controller('LeftCtrl', function($scope, $timeout, $mdSidenav, $log) {
@@ -22,31 +42,6 @@ app.controller('LeftCtrl', function($scope, $timeout, $mdSidenav, $log) {
 		                        $log.debug("close LEFT is done");
 		                      });
 		  };
-});
-	
-
-app.controller("AlertDemoCtrl",function  ($scope) {
-	$scope.alerts = [
-	    { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
-	    { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
-	];
-
-	$scope.addAlert = function() {
-		$scope.alerts.push({type: 'success' , msg: 'Another alert!'});
-	};
-
-	$scope.closeAlert = function(index) {
-		$scope.alerts.splice(index, 1);
-	};
-});
-app.controller("interactiveLogos",function($scope){
-	$scope.styles = ["img-circle img-responsive shadow-z-2 float-img","img-circle img-responsive shadow-z-3 float-img","img-circle img-responsive shadow-z-4 float-img","img-circle img-responsive shadow-z-5 float-img"];
-
-	$scope.hoverIn = function(){
-		
-		};
-	$scope.hoverOut = function(){
-		};
 });
 
 app.controller("imageGallery",function($scope){

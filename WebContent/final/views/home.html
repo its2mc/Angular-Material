@@ -1,0 +1,23 @@
+<div class="row" style="height: 100px;"></div>
+<div class="container">
+	<div class="row featurette" style="min-height: 310px;">
+		<div class="col-md-5">
+			<h2 class="featurette-heading">Angular JS Image Gallery Sample</h2>
+			<p class="lead">
+				<element> This applet shows the compatibility of Angular
+				js on a material design bootstrap framework. Click on the image to
+				move to the next slide. </element>
+			</p>
+		</div>
+		<div class="col-md-7" data-ng-controller="imageGallery">
+			<div data-ng-show="images.length" style="overflow: hidden;">
+				<div data-ng-repeat="image in images">
+					<img style="margin-left: 200px;" data-ng-src="{{image}}"
+						data-ng-hide="!isCurrentSlideIndex($index)"
+						data-ng-click="nextSlide()" class='repeat-item' />
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
