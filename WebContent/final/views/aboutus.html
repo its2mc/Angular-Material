@@ -3,24 +3,24 @@
 		<div class="row featurette">
 			<div class="col-md-7" data-ng-controller="Buttons">
 				<div layout="row" style="margin:5px;">
-					<md-button class="md-raised md-primary" data-ng-click="toggleAlert()">
+					<md-button style="margin:5px;padding:13px;" class="md-raised md-primary" data-ng-click="toggleAlert()">
 						Generate Alert
 					</md-button>
 				</div>
 				<div layout="row" style="margin:5px;">
-					<md-button class="md-raised md-primary" data-ng-click="toggleText()">
+					<md-button style="margin:5px;padding:13px;" class="md-raised md-primary" data-ng-click="toggleText()">
 						Show Text
 					</md-button>
-					<span ng-hide="textShow">This text plays peek-a-boo!!!</span>
+					<span style="padding-top:1%;padding-bottom:1%;" ng-hide="textShow">This text plays peek-a-boo!!!</span>
 				</div>
-				<div layout="row" style="margin:5px;">
-					<md-button class="md-raised md-primary" data-ng-click="getJSON()">
+				<div layout="row" style="margin:5px;text-align:center;">
+					<md-button style="margin:5px;padding:13px;" class="md-raised md-primary" data-ng-click="getJSON()">
 						JSON XHR Retrieval
 					</md-button>
 					<span>{{jsonText}}</span>
 				</div>
 				<div layout="row" style="margin:5px;">
-					<md-button class="md-raised md-primary" data-ng-click="getXML()">
+					<md-button style="margin:5px;padding:13px;" class="md-raised md-primary" data-ng-click="getXML()">
 						XML XHR Retrieval
 					</md-button>
 					<span>{{xmlText}}</span>

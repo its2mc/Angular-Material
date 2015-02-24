@@ -28,11 +28,11 @@
 </head>
 <body>
 
- 	<!-- Left Side Navigator Menu -->
+ 	<!-- Top Bar -->
 	<section layout="row" flex data-ng-controller="AppCtrl">
 			<!-- This is the top menubar with the logo and the menu button. -->
 	<div class="navbar-wrapper navbar-fixed-top"
-		style="position: fixed; width: 100%;" data-ng-controller="AppCtrl">
+		style="position: fixed; width: 100%;">
 		
 		<nav class="navbar navbar-default shadow-z-1">
 		
@@ -41,24 +41,23 @@
 			<md-icon md-svg-src="icons/ic_menu_24px.svg"></md-icon> 
 			
 			</md-button>
-			<p class="pull-right">
+			<p id="logo-box" class="pull-right">
 				<span>This is a sample text. Anything can go here.. maybe a motto.</span> 
-				<img style="margin-right: 10px;" class="shadow-z-2 logo img-circle"
+				<img style="margin-right:10px;" class="md-primary shadow-z-2 logo img-circle"
 					ng-src="../res/img/alkira.png"></img>
 			</p>
 		</nav>
 	</div>
 	
 		<!-- Left Side Navigator -->
-		<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
-		<div style="margin-top:71px;"></div>
-			<md-toolbar class="menu-bar" data-ng-controller='AppCtrl'>
-        		<h1 class="md-toolbar-tools md-theme-teal md-hue-1" >{{page.menuTitle}}</h1>
+		<md-sidenav style="z-index:1050;"class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+			<md-toolbar class="menu-bar">
+        		<h1 class="md-toolbar-tools" style="background-color:#1C3622;">{{page.menuTitle}}</h1>
       		</md-toolbar>
 			<md-content class="md-padding" >
 				<p hide-md show-gt-md>This sidenav will contain possible menu options,
 				which can be dynamic</p>
-				<p data-ng-controller='AppCtrl'>
+				<p>
 					<md-button  data-ng-click="nextPage()" class="md-primary">
 						Next Page
 					</md-button>
@@ -74,11 +73,11 @@
 		 
 		 
 		<!-- Main Content -->
-		<md-content flex class="md-padding">
+		<md-content flex class="md-padding" style="overflow-x: hidden;">
 			<div style="margin-top:71px;"></div>
 			<div layout="column" layout-fill layout-align="center center">
-				<div class="slide-animate-container">
-    				<div class="slide-animate" data-ng-include="page.url"></div>
+				<div class="view-animate-container">
+    				<div class="view-animate" data-ng-include="page.url"></div>
   				</div>
 			</div>
 		</md-content>

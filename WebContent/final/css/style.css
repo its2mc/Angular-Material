@@ -22,10 +22,6 @@ hr {
  	background-color: #3C6245;
 }
 
-.md-button {
-	margin:6px;
-}
-
 .menu-bar {
 	background: #3C6245;
 	
@@ -36,4 +32,18 @@ hr {
 	height:100%;
 	margin:auto;
 	background-color:grey;
+}
+
+section {
+	height:inherit;!important
+}
+
+#logo-box span {
+   position: absolute;
+   bottom: 0;
+   right: 10%;
+}
+
+.row span {
+	margin:10px;
 }

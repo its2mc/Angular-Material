@@ -2,12 +2,12 @@ var app = angular.module('alkiraApp', ['ngMaterial']);
 	app.config(function($mdThemingProvider) {
 		$mdThemingProvider.theme('default')
 		.primaryPalette('teal')
-		.accentPalette('grey')
+		.accentPalette('teal')
 		.backgroundPalette('grey');
 	});
 
 app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $log) {
-	$scope.activePageNo = 1;
+	$scope.activePageNo = 0;
 	$scope.pages = [
 	    {menuTitle : 'Home',url : 'views/home.html'},
 		{menuTitle : 'Contact Us',url : 'views/contactus.html'},
@@ -25,13 +25,13 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $log) {
 	$scope.nextPage = function(){
 		if ($scope.activePageNo < ($scope.pages.length-1)){
 			$scope.page = $scope.pages[++$scope.activePageNo];
-			$log.debug("less than 2");
+			
 		}else {
 			$scope.activePageNo = 0;
-			$scope.page = $scope.pages[$scope.activePageNo];
-			$log.debug("greater than or equal to 2");
+			$scope.page = $scope.pages[$scope.activePageNo++];
+			
 		} 
-		$log.debug($scope.page);
+		$log.debug($scope.page.url);
 	};
 });
 
@@ -39,7 +39,7 @@ app.controller('LeftCtrl', function($scope, $timeout, $mdSidenav, $log) {
 		  $scope.close = function() {
 		    $mdSidenav('left').close()
 		                      .then(function(){
-		                        $log.debug("close LEFT is done");
+		                        $log.debug("close left is done");
 		                      });
 		  };
 });
