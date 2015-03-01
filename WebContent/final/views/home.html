@@ -12,7 +12,7 @@
 		<div class="col-md-7" data-ng-controller="imageGallery">
 			<div data-ng-show="images.length" style="overflow: hidden;">
 				<div data-ng-repeat="image in images">
-					<img style="margin-left: 200px;" data-ng-src="{{image}}"
+					<img style="margin-left: 200px;" data-ng-src="{[{image}]}"
 						data-ng-hide="!isCurrentSlideIndex($index)"
 						data-ng-click="nextSlide()" class='repeat-item' />
 				</div>

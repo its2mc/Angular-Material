@@ -28,31 +28,34 @@
 </head>
 <body>
 
- 	<!-- Top Bar -->
+ 	<!-- Top Menu Bar -->
 	<section layout="row" flex data-ng-controller="AppCtrl">
 			<!-- This is the top menubar with the logo and the menu button. -->
-	<div class="navbar-wrapper navbar-fixed-top"
-		style="position: fixed; width: 100%;">
-		
-		<nav class="navbar navbar-default shadow-z-1">
-		
-			<md-button style="margin-left:10px;margin-top:5px;" class="md-fab shadow-z-3"
-				aria-label="Comment" ng-click="toggleLeft()">
+	<md-toolbar style="position: fixed; height: 30px;background-color:#1C3622;" layout="row">
+		<div flex="5">
+			<md-button style="margin-left:10px;margin-top:5px;background-color:#1C3622;" class="md-fab md-primary"
+				aria-label="Side Menu" ng-click="toggleLeft()">
 			<md-icon md-svg-src="icons/ic_menu_24px.svg"></md-icon> 
-			
-			</md-button>
-			<p id="logo-box" class="pull-right">
+		</md-button>
+		</div>
+		<div flex>
+			<p id="logo-box">
 				<span>This is a sample text. Anything can go here.. maybe a motto.</span> 
-				<img style="margin-right:10px;" class="md-primary shadow-z-2 logo img-circle"
-					ng-src="../res/img/alkira.png"></img>
 			</p>
-		</nav>
-	</div>
+		</div>
+		<div flex="10">
+			<img style="margin-right:10px;" class="md-primary shadow-z-2 logo img-circle"
+					ng-src="../res/img/alkira.png"></img>
+		</div>
+			
+
+			
+	</md-toolbar>
 	
 		<!-- Left Side Navigator -->
 		<md-sidenav style="z-index:1050;"class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
 			<md-toolbar class="menu-bar">
-        		<h1 class="md-toolbar-tools" style="background-color:#1C3622;">{{page.menuTitle}}</h1>
+        		<h1 class="md-toolbar-tools" style="background-color:#1C3622;">{[{page.menuTitle}]}</h1>
       		</md-toolbar>
 			<md-content class="md-padding" >
 				<p hide-md show-gt-md>This sidenav will contain possible menu options,
@@ -82,7 +85,6 @@
 			</div>
 		</md-content>
 	</section>
-
 
 <!--Dependency Importation-->
 	<!-- Angular Material Dependencies -->

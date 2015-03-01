@@ -5,6 +5,9 @@ var app = angular.module('alkiraApp', ['ngMaterial']);
 		.accentPalette('teal')
 		.backgroundPalette('grey');
 	});
+	app.config(function($interpolateProvider){
+	    $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+	});
 
 app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $log) {
 	$scope.activePageNo = 0;
@@ -25,11 +28,9 @@ app.controller('AppCtrl', function($scope, $timeout, $mdSidenav, $log) {
 	$scope.nextPage = function(){
 		if ($scope.activePageNo < ($scope.pages.length-1)){
 			$scope.page = $scope.pages[++$scope.activePageNo];
-			
 		}else {
 			$scope.activePageNo = 0;
-			$scope.page = $scope.pages[$scope.activePageNo++];
-			
+			$scope.page = $scope.pages[$scope.activePageNo];
 		} 
 		$log.debug($scope.page.url);
 	};

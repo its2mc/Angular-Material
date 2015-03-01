@@ -8,7 +8,7 @@
 					interact with the bootstrap styled DOM. </element>
 				</p>
 			</div>
-			<div class="col-md-7" layout="column" layout-align="space-around" data-ng-controller="DOMControl" style="{{bckgndColor}}">
+			<div class="col-md-7" layout="column" layout-align="space-around" data-ng-controller="DOMControl" style="{[{bckgndColor}]}">
 				<div layout="row" style="margin:5px;">
 					<md-button style="margin:5px;padding:13px;" class="md-raised md-primary" data-ng-click="chngBackgroundColor()">
 						Change Background Color
@@ -29,7 +29,7 @@
 					<md-button style="margin:5px;padding:13px;" class="md-raised md-primary" data-ng-click="chngTxtColor()">
 						Change Text Color
 					</md-button>
-					<span style="padding-top:1%;padding-bottom:1%;{{styleVar}}">This is the text that will change color, I
+					<span style="padding-top:1%;padding-bottom:1%;{[{styleVar}]}">This is the text that will change color, I
 						hope.</span>
 				</div>
 			</div>

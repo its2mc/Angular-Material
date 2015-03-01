@@ -17,13 +17,13 @@
 					<md-button style="margin:5px;padding:13px;" class="md-raised md-primary" data-ng-click="getJSON()">
 						JSON XHR Retrieval
 					</md-button>
-					<span>{{jsonText}}</span>
+					<span>{[{jsonText}]}</span>
 				</div>
 				<div layout="row" style="margin:5px;">
 					<md-button style="margin:5px;padding:13px;" class="md-raised md-primary" data-ng-click="getXML()">
 						XML XHR Retrieval
 					</md-button>
-					<span>{{xmlText}}</span>
+					<span>{[{xmlText}]}</span>
 				</div>
 				<div id="source-modal" class="modal fade in" tabindex="-1"
 					data-ng-hide="alertHide" style="display: block;">
@@ -32,10 +32,10 @@
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal"
 									aria-hidden="true" data-ng-click="toggleAlert()">×</button>
-								<h4 class="modal-title">{{alertTitle}}</h4>
+								<h4 class="modal-title">{[{alertTitle}]}</h4>
 							</div>
 							<div class="modal-body">
-								<pre>{{alertMsg}} </pre>
+								<pre>{[{alertMsg}]} </pre>
 							</div>
 						</div>
 					</div>
