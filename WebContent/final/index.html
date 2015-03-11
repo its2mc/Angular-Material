@@ -28,15 +28,20 @@
 </head>
 <body>
 
- 	<!-- Top Menu Bar -->
+ 	<!-- Section is the angular-material component for the content container -->
 	<section layout="row" flex data-ng-controller="AppCtrl">
-			<!-- This is the top menubar with the logo and the menu button. -->
+	
+	<!-- This is the top Menu bar with the logo and the menu button -->
 	<md-toolbar style="position: fixed; height: 30px;background-color:#1C3622;" layout="row">
+		<!-- Flex divides a row into flexible columns A flex declaration with a 
+		number limits the relative size of the column while a flex declaration 
+		without a number changes to the column width available -->
 		<div flex="5">
+		<!-- Custom css declarations are written on the webpage to override the native css -->
 			<md-button style="margin-left:10px;margin-top:5px;background-color:#1C3622;" class="md-fab md-primary"
 				aria-label="Side Menu" ng-click="toggleLeft()">
-			<md-icon md-svg-src="icons/ic_menu_24px.svg"></md-icon> 
-		</md-button>
+				<md-icon md-svg-src="icons/ic_menu_24px.svg"></md-icon> 
+			</md-button>
 		</div>
 		<div flex>
 			<p id="logo-box">
@@ -53,8 +58,10 @@
 	</md-toolbar>
 	
 		<!-- Left Side Navigator -->
+		<!-- The z-index is set to a high to make the sidenav be above the top menu -->
 		<md-sidenav style="z-index:1050;"class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
 			<md-toolbar class="menu-bar">
+			<!-- The custom braces used are '{[{ }]}' -->
         		<h1 class="md-toolbar-tools" style="background-color:#1C3622;">{[{page.menuTitle}]}</h1>
       		</md-toolbar>
 			<md-content class="md-padding" >
@@ -67,7 +74,7 @@
 				</p>
 			</md-content> 
 			<div class="container-fluid">
-				<p class="navbar-fixed-bottom" style="margin-top:10px;margin-bottom:10px">
+				<p class="navbar-fixed-bottom" style="margin-top:50px;margin-bottom:50px">
 					© 2014 Alkira International, Inc. · <a href="#">Privacy</a> · <a
 						href="#">Terms</a>
 				</p>
@@ -75,11 +82,13 @@
 		 </md-sidenav>
 		 
 		 
-		<!-- Main Content -->
+		<!-- Container for the main content -->
 		<md-content flex class="md-padding" style="overflow-x: hidden;">
 			<div style="margin-top:71px;"></div>
 			<div layout="column" layout-fill layout-align="center center">
 				<div class="view-animate-container">
+				<!-- The data-ng-include directive is tied to the page.url variable 
+				which contains the page url-->
     				<div class="view-animate" data-ng-include="page.url"></div>
   				</div>
 			</div>
